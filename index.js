@@ -33,6 +33,10 @@ async function getAllPlaceDetails({ keyword }) {
 
   finalDetails.photoUrl = photoUrl;
 
+  for (let key in initialDetails) {
+    finalDetails[[key]] = initialDetails[key];
+  }
+
   return finalDetails;
 }
 
@@ -62,7 +66,7 @@ async function searchForPlace(keyword) {
   //   return place;
   // })
 
-  if (logToConsole) console.log('>>> placeFromTextURL', response.data);
+  if (logToConsole) console.log('>>> searchForPlace', response.data);
 
   let result = {
     formattedAddress: place.formatted_address,
@@ -71,6 +75,8 @@ async function searchForPlace(keyword) {
     photoReference: place.photos[0].photo_reference,
     placeId: place.place_id
   }
+
+  console.log('    >>> searchForPlace result', result);
 
   return result;
 }
