@@ -26,12 +26,12 @@ async function getAllPlaceDetails({ keyword }) {
 
   if (logToConsole) console.log('>>> INITIAL DETAILS', initialDetails);
 
-  let photoUrl = await getPhoto(initialDetails.photoReference);
+  // let photoUrl = await getPhoto(initialDetails.photoReference);
   let finalDetails = await getPlaceDetails(initialDetails.placeId);
 
   if (logToConsole) console.log('>>> FINAL DETAILS', finalDetails);
 
-  finalDetails.photoUrl = photoUrl;
+  // finalDetails.photoUrl = photoUrl;
 
   for (let key in initialDetails) {
     finalDetails[[key]] = initialDetails[key];
@@ -82,20 +82,20 @@ async function searchForPlace(keyword) {
 }
 
 
-async function getPhoto(photoReference) {
-  const photoReferenceURL = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=` +
-    `${photoReference}&` +
-    `key=${placesAPIKey}`;
+// async function getPhoto(photoReference) {
+//   const photoReferenceURL = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=` +
+//     `${photoReference}&` +
+//     `key=${placesAPIKey}`;
 
-  if (logToConsole) console.log('>>> getPhoto', photoReferenceURL)
+//   if (logToConsole) console.log('>>> getPhoto', photoReferenceURL)
 
-  let response = await axios.get(photoReferenceURL);
-  response = response.data;
+//   let response = await axios.get(photoReferenceURL);
+//   response = response.data;
 
-  if (logToConsole) console.log('>>> getPhoto complete')
+//   if (logToConsole) console.log('>>> getPhoto complete')
 
-  return response;
-}
+//   return response;
+// }
 
 
 async function getPlaceDetails(placeId) {
