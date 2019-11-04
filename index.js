@@ -2,8 +2,10 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const axios = require('axios')
-
 const app = express()
+
+app.use(cors())
+
 const port = process.env.PORT || 3000
 const logToConsole = process.env.LOG_TO_CONSOLE || false
 const placesAPIKey = process.env.PLACES_API_KEY
@@ -105,8 +107,6 @@ async function getPlaceDetails(placeId) {
   
   return response
 }
-
-app.use(cors())
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
